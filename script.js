@@ -20,8 +20,10 @@ function createTable() {
   // Get table reference
   const table = document.getElementById("myTable");
 
-  // Clear any existing content
-  table.innerHTML = "";
+  // ✅ Completely clear old table (fix for Cypress duplicate issue)
+  while (table.rows.length > 0) {
+    table.deleteRow(0);
+  }
 
   // Build rows and columns
   for (let i = 0; i < rn; i++) {
