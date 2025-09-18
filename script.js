@@ -1,30 +1,33 @@
 function createTable() {
-  // Prompt for number of rows
-  const rn = prompt("Input number of rows");
-  const rowCount = parseInt(rn);
+  // Prompt for rows
+  let rn = prompt("Input number of rows");
+  let cn = prompt("Input number of columns");
 
-  // Prompt for number of columns
-  const cn = prompt("Input number of columns");
-  const colCount = parseInt(cn);
+  // Convert to integers
+  rn = parseInt(rn);
+  cn = parseInt(cn);
 
-  // Validate inputs
-  if (isNaN(rowCount) || isNaN(colCount)) return;
-  if (rowCount <= 0 || colCount <= 0) {
-    alert("Number of rows and columns must be positive integers.");
+  // Validate input
+  if (isNaN(rn) || isNaN(cn)) {
+    alert("❌ Please enter valid numbers.");
+    return;
+  }
+  if (rn <= 0 || cn <= 0) {
+    alert("❌ Rows and columns must be greater than 0.");
     return;
   }
 
-  // Get the table element
+  // Get table reference
   const table = document.getElementById("myTable");
 
   // Clear any existing content
   table.innerHTML = "";
 
-  // Create rows and columns
-  for (let i = 0; i < rowCount; i++) {
-    const row = table.insertRow();
-    for (let j = 0; j < colCount; j++) {
-      const cell = row.insertCell();
+  // Build rows and columns
+  for (let i = 0; i < rn; i++) {
+    let row = table.insertRow();
+    for (let j = 0; j < cn; j++) {
+      let cell = row.insertCell();
       cell.textContent = `Row-${i} Column-${j}`;
     }
   }
